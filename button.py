@@ -67,7 +67,6 @@ pee.setup_pins()
 poop.setup_pins()
 bed.setup_pins()
 bellyrub.setup_pins()
-#input_state_wow = GPIO.input(wow.pin)
 
 #main loop
 # todo: Should try to stream line this if I can.  There will be alot of if statements within this while loop.
