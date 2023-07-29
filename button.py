@@ -40,9 +40,6 @@ class button:
     if __name__ == "__main__":
       send_notification("Sarada Says:", self.message)
 
-
-
-
 # creates buttons from button class
 wow = button("wow", "sounds/Wow.mp3", 4, "message is Wow")
 #applause = button("applause", "sounds/applause-1.wav", 18, "message is applause")
