@@ -38,7 +38,7 @@ class button:
 
   def send_pb_notification(self):
     if __name__ == "__main__":
-      send_notification(self.prompt, self.message)
+      send_notification("Sarada Says:", self.message)
 
 
 
