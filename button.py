@@ -1,11 +1,19 @@
 import RPi.GPIO as GPIO
 import time
 import pygame
+import json
 from pushbullet import Pushbullet
+
 
 pygame.mixer.init()
 GPIO.setmode(GPIO.BCM)
-pb = Pushbullet("o.8SH4Ij4fyTjSU9yx5x8gBFYPjeNWfOdK")
+
+with open("config.json") as config_file:
+  config = json.load(config_file)
+
+pb_api_key = config["pb_api_key"]
+
+pb = Pushbullet(pb_api_key)
 
 buttons = []
 
