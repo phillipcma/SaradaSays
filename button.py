@@ -108,31 +108,43 @@ while True:
 
 
   if input_state_wow == False:
+    wow.send_pb_notification()
     wow.load_clip()
   #elif input_state_applause == False:
   #  applause.load_clip()
   elif input_state_summon == False:
-    summon.load_clip()
     summon.send_pb_notification()
+    summon.load_clip()
   elif input_state_churu == False:
+    churu.send_pb_notification()
     churu.load_clip()
   elif input_state_outside == False:
+    outside.send_pb_notification()
     outside.load_clip()
   elif input_state_play == False:
+    play.send_pb_notification()
     play.load_clip()
   elif input_state_litterbox == False:
+    littterbox.send_pb_notification()
     littterbox.load_clip()
   elif input_state_mom == False:
+    mom.send_pb_notification()
     mom.load_clip()
   elif input_state_dad == False:
+    dad.send_pb_notification()
     dad.load_clip()
   elif input_state_mad == False:
+    mad.send_pb_notification()
     mad.load_clip()
   elif input_state_pee == False:
+    Pee.send_pb_notification()
     Pee.load_clip()
   elif input_state_poop == False:
+    Poop.send_pb_notification()
     Poop.load_clip()
   elif input_state_bed == False:    
+    bed.send_pb_notification()
     bed.load_clip()
   elif input_state_bellyrub == False:
+    bellyrub.send_pb_notification()
     bellyrub.load_clip()
