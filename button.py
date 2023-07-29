@@ -10,7 +10,8 @@ pb = Pushbullet("o.8SH4Ij4fyTjSU9yx5x8gBFYPjeNWfOdK")
 buttons = []
 
 
-
+def send_notification(title, message):
+  push = pb.push_note(title, message)
 
 class button:
   def __init__(self, prompt, clip, pin, message):
@@ -35,9 +36,11 @@ class button:
     GPIO.setup(self.pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
     print("pin " + str(self.pin) + " has been setup" )
 
-  def pb_notification(self):
+  def send_pb_notification(self)
     if __name__ == "__main__":
       send_notification(self.prompt, self.message)
+
+
 
 
 # creates buttons from button class
@@ -105,7 +108,7 @@ while True:
   #  applause.load_clip()
   elif input_state_summon == False:
     summon.load_clip()
-    summon.pb_notification()
+    summon.send_pb_notification()
   elif input_state_churu == False:
     churu.load_clip()
   elif input_state_outside == False:
