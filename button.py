@@ -1,19 +1,24 @@
 import RPi.GPIO as GPIO
 import time
 import pygame
+from pushbullet import Pushbullet
 
 pygame.mixer.init()
 GPIO.setmode(GPIO.BCM)
+pb = Pushbullet("o.8SH4Ij4fyTjSU9yx5x8gBFYPjeNWfOdK")
 
 buttons = []
 
 
+
+
 class button:
-  def __init__(self, prompt, clip, pin):
+  def __init__(self, prompt, clip, pin, message):
     self.prompt = prompt
     self.clip = clip
     self.pin = pin
-    button_attributes = [prompt, clip, pin]
+    self.message = message
+    button_attributes = [prompt, clip, pin, message]
     buttons.append(button_attributes)
 
   def load_clip(self):
@@ -30,25 +35,28 @@ class button:
     GPIO.setup(self.pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
     print("pin " + str(self.pin) + " has been setup" )
 
+  def pb_notification(self):
+    if __name__ == "__main__":
+      send_notification(self.prompt, self.message)
+
 
 # creates buttons from button class
-wow = button("wow", "sounds/Wow.mp3", 4)
-#applause = button("applause", "sounds/applause-1.wav", 18)
-summon = button("summon", "sounds/Summon.mp3", 22)
+wow = button("wow", "sounds/Wow.mp3", 4, "message is Wow")
+#applause = button("applause", "sounds/applause-1.wav", 18, "message is applause")
+summon = button("summon", "sounds/Summon.mp3", 22, "message is summon")
 # unassigned buttons to be implemented later
-churu = button("churu", "sounds/Churu.mp3", 17)
-outside = button("outside", "sounds/Outside.mp3", 27)
+churu = button("churu", "sounds/Churu.mp3", 17, "message is Churu")
+outside = button("outside", "sounds/Outside.mp3", 27, "Message is Outside")
 # Commented out inside because its the least interesting).
-#inside = button("inside", "sounds/Inside.mp3", 5)
-play = button("play", "sounds/Play.mp3", 6)
-litterbox = button("litterbox", "sounds/Litterbox.mp3", 13)
-mom = button("mom", "sounds/Mom.mp3", 19)
-dad = button("dad", "sounds/Dad.mp3", 20)
-mad = button("mad", "sounds/Mad.mp3", 21)
-pee = button("pee", "sounds/Pee.mp3", 16)
-poop = button("poop", "sounds/Poop.mp3", 25)
-bed = button("bed", "sounds/Bed.mp3", 24)
-bellyrub = button("bellyrub", "sounds/Bellyrub.mp3", 23)
+play = button("play", "sounds/Play.mp3", 6, "message is Play")
+litterbox = button("litterbox", "sounds/Litterbox.mp3", 13, "message is litterbox")
+mom = button("mom", "sounds/Mom.mp3", 19, "message is mom")
+dad = button("dad", "sounds/Dad.mp3", 20, "message is Dad")
+mad = button("mad", "sounds/Mad.mp3", 21,, "message is Mad")
+pee = button("pee", "sounds/Pee.mp3", 16, , "message is Pee")
+poop = button("poop", "sounds/Poop.mp3", 25, "message is Poop")
+bed = button("bed", "sounds/Bed.mp3", 24, "message is bed")
+bellyrub = button("bellyrub", "sounds/Bellyrub.mp3", 23, "message is bellyrub")
 
 ## reclaim from wow and applause if you need more....
 
@@ -97,6 +105,7 @@ while True:
   #  applause.load_clip()
   elif input_state_summon == False:
     summon.load_clip()
+    summon.pb_notification()
   elif input_state_churu == False:
     churu.load_clip()
   elif input_state_outside == False:
