@@ -36,7 +36,7 @@ class button:
     GPIO.setup(self.pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
     print("pin " + str(self.pin) + " has been setup" )
 
-  def send_pb_notification(self)
+  def send_pb_notification(self):
     if __name__ == "__main__":
       send_notification(self.prompt, self.message)
 
