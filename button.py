@@ -135,8 +135,8 @@ while True:
     play.send_pb_notification()
     play.load_clip()
   elif input_state_litterbox == False:
-    littterbox.send_pb_notification()
-    littterbox.load_clip()
+    litterbox.send_pb_notification()
+    litterbox.load_clip()
   elif input_state_mom == False:
     mom.send_pb_notification()
     mom.load_clip()
