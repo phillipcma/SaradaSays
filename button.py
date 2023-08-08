@@ -42,7 +42,7 @@ class button:
 
   def load_clip(self):
     ''' loads and plays the appropriate sound clip for the button before it is played '''
-    print("playing " + str(self.prompt))
+    print("playing " + str(self.prompt) + str(self.pin))
     pygame.mixer.music.load(self.clip)    
     pygame.mixer.music.play()
     time.sleep(1)
@@ -59,16 +59,16 @@ class button:
       send_notification("Sarada Says:", self.message)
 
 # creates buttons from button class
-wow = button("wow", "sounds/Wow.mp3", 4, "message is Wow")
+wow = button("wow", "sounds/Wow.mp3", 12, "message is Wow")
 #applause = button("applause", "sounds/applause-1.wav", 18, "message is applause")
 summon = button("summon", "sounds/Summon.mp3", 22, "message is summon")
 # unassigned buttons to be implemented later
-churu = button("churu", "sounds/Churu.mp3", 17, "message is Churu")
+churu = button("churu", "sounds/Churu.mp3", 18, "message is Churu")
 outside = button("outside", "sounds/Outside.mp3", 27, "Message is Outside")
 # Commented out inside because its the least interesting).
 play = button("play", "sounds/Play.mp3", 6, "message is Play")
 litterbox = button("litterbox", "sounds/Litterbox.mp3", 13, "message is litterbox")
-mom = button("mom", "sounds/Mom.mp3", 19, "message is mom")
+mom = button("mom", "sounds/Mom.mp3", 26, "message is mom")
 dad = button("dad", "sounds/Dad.mp3", 20, "message is Dad")
 mad = button("mad", "sounds/Mad.mp3", 21, "message is Mad")
 pee = button("pee", "sounds/Pee.mp3", 16, "message is Pee")
