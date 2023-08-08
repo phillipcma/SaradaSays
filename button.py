@@ -74,7 +74,7 @@ mad = button("mad", "sounds/Mad.mp3", 21, "message is Mad")
 pee = button("pee", "sounds/Pee.mp3", 16, "message is Pee")
 poop = button("poop", "sounds/Poop.mp3", 25, "message is Poop")
 bed = button("bed", "sounds/Bed.mp3", 24, "message is bed")
-bellyrub = button("bellyrub", "sounds/Bellyrub.mp3", 23, "message is bellyrub")
+bellyrub = button("bellyrub", "sounds/BellyRub.mp3", 23, "message is bellyrub")
 
 ## reclaim from wow and applause if you need more....
 
