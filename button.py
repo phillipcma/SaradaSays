@@ -147,11 +147,11 @@ while True:
     mad.send_pb_notification()
     mad.load_clip()
   elif input_state_pee == False:
-    Pee.send_pb_notification()
-    Pee.load_clip()
+    pee.send_pb_notification()
+    pee.load_clip()
   elif input_state_poop == False:
-    Poop.send_pb_notification()
-    Poop.load_clip()
+    poop.send_pb_notification()
+    poop.load_clip()
   elif input_state_bed == False:    
     bed.send_pb_notification()
     bed.load_clip()
