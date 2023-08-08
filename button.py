@@ -2,6 +2,7 @@ import RPi.GPIO as GPIO
 import time
 import pygame
 import json
+import psycopg2
 from pushbullet import Pushbullet
 
 
@@ -11,11 +12,20 @@ GPIO.setmode(GPIO.BCM)
 with open("config.json") as config_file:
   config = json.load(config_file)
 
+
 pb_api_key = config["pb_api_key"]
+db_user = config["db_user"]
+db_pass = config["db_pass"]
 
 pb = Pushbullet(pb_api_key)
 
 buttons = []
+
+#try:
+#  connection = psycopg2.connect(
+#    db_user = "SaradaSaysDB", 
+#    db_pass = "NarutoUzumaki")
+    
 
 
 def send_notification(title, message):
