@@ -20,6 +20,7 @@ db_pass = config["db_pass"]
 pb = Pushbullet(pb_api_key)
 
 buttons = []
+instances = []
 
 #try:
 #  connection = psycopg2.connect(
@@ -39,6 +40,7 @@ class button:
     self.message = message
     button_attributes = [prompt, clip, pin, message]
     buttons.append(button_attributes)
+    instances.append(self)
 
   def load_clip(self):
     ''' loads and plays the appropriate sound clip for the button before it is played '''
@@ -59,13 +61,10 @@ class button:
       send_notification("Sarada Says:", self.message)
 
 # creates buttons from button class
-wow = button("wow", "sounds/Wow.mp3", 12, "message is Wow")
-#applause = button("applause", "sounds/applause-1.wav", 18, "message is applause")
+food = button("food", "sounds/Food.mp3", 12, "message is Food")
 summon = button("summon", "sounds/Summon.mp3", 22, "message is summon")
-# unassigned buttons to be implemented later
 churu = button("churu", "sounds/Churu.mp3", 18, "message is Churu")
 outside = button("outside", "sounds/Outside.mp3", 27, "Message is Outside")
-# Commented out inside because its the least interesting).
 play = button("play", "sounds/Play.mp3", 6, "message is Play")
 litterbox = button("litterbox", "sounds/Litterbox.mp3", 13, "message is litterbox")
 mom = button("mom", "sounds/Mom.mp3", 26, "message is mom")
@@ -76,31 +75,18 @@ poop = button("poop", "sounds/Poop.mp3", 25, "message is Poop")
 bed = button("bed", "sounds/Bed.mp3", 24, "message is bed")
 bellyrub = button("bellyrub", "sounds/BellyRub.mp3", 23, "message is bellyrub")
 
-## reclaim from wow and applause if you need more....
 
-#
-wow.setup_pins()
-#applause.setup_pins()
-summon.setup_pins()
-churu.setup_pins()
-outside.setup_pins()
-play.setup_pins()
-litterbox.setup_pins()
-mom.setup_pins()
-dad.setup_pins()
-mad.setup_pins()
-pee.setup_pins()
-poop.setup_pins()
-bed.setup_pins()
-bellyrub.setup_pins()
+#sets up pin assignment
+for i in instances:
+  i.setup_pins()
+  time.sleep(.5)
 
 #main loop
 # todo: Should try to stream line this if I can.  There will be alot of if statements within this while loop.
 while True:
   # todo: figure out why the print in button.load_clip() doesn't print if the input_state_{BUTTON} is outside
   #       the while loop.  It doesn't make much sense to me.  Maybe it's the conflicting while loops???
-  input_state_wow = GPIO.input(wow.pin)
-  #input_state_applause = GPIO.input(applause.pin)
+  input_state_food = GPIO.input(food.pin)
   input_state_summon = GPIO.input(summon.pin)
   input_state_churu = GPIO.input(churu.pin)
   input_state_outside = GPIO.input(outside.pin)
@@ -115,13 +101,9 @@ while True:
   input_state_bellyrub = GPIO.input(bellyrub.pin)
 
 
-
-
-  if input_state_wow == False:
-    wow.send_pb_notification()
-    wow.load_clip()
-  #elif input_state_applause == False:
-  #  applause.load_clip()
+  if input_state_food == False:
+    food.send_pb_notification()
+    food.load_clip()
   elif input_state_summon == False:
     summon.send_pb_notification()
     summon.load_clip()
