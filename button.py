@@ -81,62 +81,8 @@ for i in instances:
   i.setup_pins()
   time.sleep(.5)
 
-#main loop
-# todo: Should try to stream line this if I can.  There will be alot of if statements within this while loop.
 while True:
-  # todo: figure out why the print in button.load_clip() doesn't print if the input_state_{BUTTON} is outside
-  #       the while loop.  It doesn't make much sense to me.  Maybe it's the conflicting while loops???
-  input_state_food = GPIO.input(food.pin)
-  input_state_summon = GPIO.input(summon.pin)
-  input_state_churu = GPIO.input(churu.pin)
-  input_state_outside = GPIO.input(outside.pin)
-  input_state_play = GPIO.input(play.pin)
-  input_state_litterbox = GPIO.input(litterbox.pin)
-  input_state_mom = GPIO.input(mom.pin)
-  input_state_dad = GPIO.input(dad.pin)
-  input_state_mad = GPIO.input(mad.pin)
-  input_state_pee = GPIO.input(pee.pin)
-  input_state_poop = GPIO.input(poop.pin)
-  input_state_bed = GPIO.input(bed.pin)
-  input_state_bellyrub = GPIO.input(bellyrub.pin)
-
-
-  if input_state_food == False:
-    food.send_pb_notification()
-    food.load_clip()
-  elif input_state_summon == False:
-    summon.send_pb_notification()
-    summon.load_clip()
-  elif input_state_churu == False:
-    churu.send_pb_notification()
-    churu.load_clip()
-  elif input_state_outside == False:
-    outside.send_pb_notification()
-    outside.load_clip()
-  elif input_state_play == False:
-    play.send_pb_notification()
-    play.load_clip()
-  elif input_state_litterbox == False:
-    litterbox.send_pb_notification()
-    litterbox.load_clip()
-  elif input_state_mom == False:
-    mom.send_pb_notification()
-    mom.load_clip()
-  elif input_state_dad == False:
-    dad.send_pb_notification()
-    dad.load_clip()
-  elif input_state_mad == False:
-    mad.send_pb_notification()
-    mad.load_clip()
-  elif input_state_pee == False:
-    pee.send_pb_notification()
-    pee.load_clip()
-  elif input_state_poop == False:
-    poop.send_pb_notification()
-    poop.load_clip()
-  elif input_state_bed == False:    
-    bed.send_pb_notification()
-    bed.load_clip()
-  elif input_state_bellyrub == False:
-    bellyrub.send_pb_notification()
-    bellyrub.load_clip()
+  for i in instances:
+    if GPIO.input(i.pin) == False:
+      i.send_pb_notification()
+      i.load_clip()
